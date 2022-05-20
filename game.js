@@ -1,8 +1,7 @@
-//Computer randomly selects rock, paper, or scissor
+//Computer randomly selects rock, paper, or scissors
 function computerPlay(choice) {
     //randomly generate 0-2
     let randomNumber = Math.floor(Math.random() * 3);
-    console.log (randomNumber);
     //if 0 then rock
     if (randomNumber == 0) {
         choice = 'rock';
@@ -11,9 +10,19 @@ function computerPlay(choice) {
         choice = 'paper';
     //else scissor
     } else {
-        choice = 'scissor'
+        choice = 'scissors'
     }
     return choice;
     
 }
-let computerChoice = computerPlay();
+
+//player inputs rock, paper, or scissors
+function playRound (playerSelection, computerSelection) {
+    playerSelection = prompt('Rock, Paper, Scissors -- Shoot!');
+    playerSelection = playerSelection.toLowerCase();
+    console.log(playerSelection);
+    computerSelection = computerPlay();
+    console.log(computerSelection);
+}
+
+playRound();
