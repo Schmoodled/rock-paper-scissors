@@ -17,8 +17,15 @@ function computerPlay() {
 
 //player inputs rock, paper, or scissors
 function playRound (playerSelection, computerSelection) {
-    playerSelection = prompt('Rock, Paper, Scissors -- Shoot!');
-    playerSelection = playerSelection.toLowerCase();
+    playerSelection = prompt('Rock, Paper, Scissors -- Shoot!').toLowerCase();
+    while (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+        playerSelection = prompt('Please input rock, paper, or scissors!')
+        if (playerSelection == null){
+            break;
+        } else {
+            playerSelection = playerSelection.toLowerCase();
+        }
+    }
     console.log('Your choice: ' + playerSelection);
     computerSelection = computerPlay();
     console.log('Opponent\'s choice: ' + computerSelection);
@@ -32,6 +39,8 @@ function playRound (playerSelection, computerSelection) {
         alert('You lose, loser! :^)')
         loss ++;
     //else you win
+    } else if(playerSelection == null){
+        alert('Game Cancelled');
     } else {
         alert('You win! :)');
         win ++;
