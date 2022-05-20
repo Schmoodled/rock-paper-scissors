@@ -23,25 +23,36 @@ function playRound (playerSelection, computerSelection) {
     console.log('Your choice: ' + playerSelection);
     computerSelection = computerPlay();
     console.log('Opponent\'s choice: ' + computerSelection);
-    console.log(playerSelection == computerPlay);
     //compare your choice to opponents
     //draw
     if (playerSelection === computerSelection) {
         alert('Draw, try again. :)');
+        draw ++;
     //rock vs paper, paper vs scissors, scissors vs rock result in a loss
     } else if (playerSelection == 'rock' && computerSelection == 'paper' || playerSelection == 'paper' && computerSelection == 'scissors' || playerSelection == 'scissors' && computerSelection == 'rock') {
         alert('You lose, loser! :^)')
+        loss ++;
     //else you win
     } else {
-        alert('You win! :)')
+        alert('You win! :)');
+        win ++;
     }
 }
 
 function game() {
     for (let i = 0; i < 5; i++) {
+        console.log('Round ' + (i + 1) +':');
         playRound();
-        console.log(i);
     }
+    alert('This is the result of 5 games:\n \n' + 'Wins: ' + win + ' ' + 'Losses: ' + loss + ' ' + 'Draws: ' + draw);
+    win = 0,
+    loss = 0,
+    draw = 0;
 }
 
+//global variables to track wins, losses, and draws
+let win = 0,
+    loss = 0,
+    draw = 0;
+    console.log(win + loss + draw)
 game();
