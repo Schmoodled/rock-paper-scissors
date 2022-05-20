@@ -29,7 +29,14 @@ function playRound (playerSelection, computerSelection) {
             }
         }
     } else {
-        playerSelection = playerSelection.toLowerCase();
+        while (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+            playerSelection = prompt('Please input rock, paper, or scissors!')
+            if (playerSelection == null){
+                break;
+            } else {
+                playerSelection = playerSelection.toLowerCase();
+            }
+        }
     }
     console.log('Your choice: ' + playerSelection);
     computerSelection = computerPlay();
