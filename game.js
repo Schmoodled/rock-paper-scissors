@@ -17,14 +17,19 @@ function computerPlay() {
 
 //player inputs rock, paper, or scissors
 function playRound (playerSelection, computerSelection) {
-    playerSelection = prompt('Rock, Paper, Scissors -- Shoot!').toLowerCase();
-    while (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
-        playerSelection = prompt('Please input rock, paper, or scissors!')
-        if (playerSelection == null){
-            break;
-        } else {
-            playerSelection = playerSelection.toLowerCase();
+    playerSelection = prompt('Rock, Paper, Scissors -- Shoot!')
+
+    if (playerSelection == null) {
+        while (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+            playerSelection = prompt('Please input rock, paper, or scissors!')
+            if (playerSelection == null){
+                break;
+            } else {
+                playerSelection = playerSelection.toLowerCase();
+            }
         }
+    } else {
+        playerSelection = playerSelection.toLowerCase();
     }
     console.log('Your choice: ' + playerSelection);
     computerSelection = computerPlay();
@@ -34,16 +39,19 @@ function playRound (playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         alert('Draw, try again. :)');
         draw ++;
+        total++;
     //rock vs paper, paper vs scissors, scissors vs rock result in a loss
     } else if (playerSelection == 'rock' && computerSelection == 'paper' || playerSelection == 'paper' && computerSelection == 'scissors' || playerSelection == 'scissors' && computerSelection == 'rock') {
         alert('You lose, loser! :^)')
         loss ++;
+        total++;
     //else you win
     } else if(playerSelection == null){
-        alert('Game Cancelled');
+        alert('Round Cancelled');
     } else {
         alert('You win! :)');
         win ++;
+        total++;
     }
 }
 
@@ -52,15 +60,17 @@ function game() {
         console.log('Round ' + (i + 1) +':');
         playRound();
     }
-    alert('This is the result of 5 games:\n \n' + 'Wins: ' + win + ' ' + 'Losses: ' + loss + ' ' + 'Draws: ' + draw);
+    alert('This is the result of ' + total + ' games:\n \n' + 'Wins: ' + win + ' ' + 'Losses: ' + loss + ' ' + 'Draws: ' + draw);
     win = 0,
     loss = 0,
-    draw = 0;
+    draw = 0,
+    total = 0;
 }
 
 //global variables to track wins, losses, and draws
 let win = 0,
     loss = 0,
-    draw = 0;
+    draw = 0,
+    total = 0;
     console.log(win + loss + draw)
 game();
