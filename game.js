@@ -37,4 +37,11 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-playRound();
+function game() {
+    for (let i = 0; i < 5; i++) {
+        playRound();
+        console.log(i);
+    }
+}
+
+game();
