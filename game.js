@@ -1,18 +1,17 @@
 //Computer randomly selects rock, paper, or scissors
-function computerPlay(choice) {
+function computerPlay() {
     //randomly generate 0-2
     let randomNumber = Math.floor(Math.random() * 3);
     //if 0 then rock
     if (randomNumber == 0) {
-        choice = 'rock';
+        return 'rock';
     //else if 1 paper
     } else if (randomNumber == 1) {
-        choice = 'paper';
+        return 'paper';
     //else scissor
     } else {
-        choice = 'scissors'
+        return 'scissors';
     }
-    return choice;
     
 }
 
