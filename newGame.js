@@ -1,22 +1,46 @@
 //randomly selects rock, paper, or scissor for the computer
-function getComputerChoice () {
+function getComputerChoice() {
     //sets a random interger between 0 - 2
     let randomNumber = Math.floor(Math.random() * 3);
     console.log(randomNumber);
-    return randomNumber == 0 ? 'rock' 
-           : randomNumber == 1 ? 'paper' 
-           : 'scissor';
+    return randomNumber == 0 ? 'rock'
+        : randomNumber == 1 ? 'paper'
+            : 'scissor';
 }
 
-console.log (getComputerChoice());
-
 //plays one round of rock-paper-scissors
-function playRound (playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     computerSelection = getComputerChoice();
-    playerSelection = prompt('Rock Paper Scissors -- Shoot!'); 
+    console.log(computerSelection);
+    playerSelection = prompt('Rock Paper Scissors -- Shoot!');
     //clicking cancel or escape ==  null | enter == ''
-    console.log(playerSelection);
-    //if null prompt user 'Are you sure you want to end the game?'
+    //if null alert user 'game is ending'
+    if (playerSelection == null) {
+        return alert('Cancelling the round.');
+    }
+    else {
+        playerSelection = playerSelection.toLowerCase();
+        console.log(playerSelection);
+
+        //checkString function
+        let checkString = (stringToCheck = playerSelection) => stringToCheck != 'rock' && stringToCheck != 'paper' && stringToCheck != 'scissors';
+
+        //update playerSelection
+        let updatePlayerSelection = function() {
+            while (checkString() == true) {
+                console.log(checkString());
+                playerSelection = prompt('Please enter rock, paper, or scissors:').toLowerCase();
+                if (playerSelection == null) {
+                    return alert('Cancelling the round.');
+                }
+            }
+        }
+
+        updatePlayerSelection();
+        console.log(playerSelection);
+
+
+    }
     //if '' ask user to input a string
     //else toLowerCase
     //check string for rock, paper, or scissors
