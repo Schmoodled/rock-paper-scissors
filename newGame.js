@@ -92,5 +92,3 @@ function playBestOf(rounds = 5) {
 }
 
 playBestOf();
-
-playBestOf();
