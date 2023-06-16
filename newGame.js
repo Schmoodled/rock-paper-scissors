@@ -26,13 +26,12 @@ function playRound(playerSelection, computerSelection) {
         let checkString = (stringToCheck = playerSelection) => stringToCheck != 'rock' && stringToCheck != 'paper' && stringToCheck != 'scissors';
 
         //update playerSelection
-        let updatePlayerSelection = function() {
+        let updatePlayerSelection = function () {
             while (checkString() == true) {
-                console.log(checkString());
                 playerSelection = prompt('Please enter rock, paper, or scissors:');
                 if (playerSelection == null) {
                     return alert('Cancelling the round.');
-                } 
+                }
                 else {
                     playerSelection = playerSelection.toLowerCase();
                 }
@@ -40,32 +39,38 @@ function playRound(playerSelection, computerSelection) {
         }
 
         updatePlayerSelection();
-        
+
         //compareSelections function to compare user input to computer selection
-        let compareSelections = function() {
-        //in the case there is a draw
-        if (playerSelection === computerSelection) {
-            return alert('Draw, you both chose ' + playerSelection);
+        let compareSelections = function () {
+            //in the case there is a draw
+            if (playerSelection === computerSelection) {
+                return alert('Draw, you both chose ' + playerSelection);
+            }
+            //in the case user loses
+            else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
+                (playerSelection == 'paper' && computerSelection == 'scissors') ||
+                (playerSelection == 'scissors' && computerSelection == 'rock')) {
+                return alert('You lose! ' + computerSelection + ' beats ' + playerSelection)
+            }
+            //in the case user wins
+            else {
+                return alert('You win! ' + playerSelection + ' beats ' + computerSelection)
+            }
         }
-        //in the case user loses
-        else if ((playerSelection == 'rock' && computerSelection == 'paper') || 
-                 (playerSelection == 'paper' && computerSelection == 'scissors') ||
-                 (playerSelection == 'scissors' && computerSelection == 'rock')) {
-            return alert('You lose! ' + computerSelection + ' beats ' + playerSelection)
-        }
-        //in the case user wins
-        else {
-            return alert('You win! ' + playerSelection + ' beats ' + computerSelection)
-        }
-        }
-        if (playerSelection === null){
+        if (playerSelection === null) {
             return
-        } else {
-        compareSelections();
+        } 
+        else {
+            compareSelections();
         }
     }
 }
 
 //playBestOf function
+function playBestOf (rounds = 5) {
+    for (let i = 0; i < rounds; i++) {
+        playRound();
+    }
+}
 
-playRound();
+playBestOf();
