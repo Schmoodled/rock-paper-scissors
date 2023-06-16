@@ -45,21 +45,27 @@ function playRound(playerSelection, computerSelection) {
         let compareSelections = function() {
         //in the case there is a draw
         if (playerSelection === computerSelection) {
-            return alert('DRAW!');
+            return alert('Draw, you both chose ' + playerSelection);
         }
         //in the case user loses
         else if ((playerSelection == 'rock' && computerSelection == 'paper') || 
                  (playerSelection == 'paper' && computerSelection == 'scissors') ||
                  (playerSelection == 'scissors' && computerSelection == 'rock')) {
-            return alert('You lose, loser!')
+            return alert('You lose! ' + computerSelection + ' beats ' + playerSelection)
         }
         //in the case user wins
         else {
-            return alert('You win, winner!')
+            return alert('You win! ' + playerSelection + ' beats ' + computerSelection)
         }
         }
+        if (playerSelection === null){
+            return
+        } else {
         compareSelections();
+        }
     }
 }
+
+//playBestOf function
 
 playRound();
