@@ -29,22 +29,21 @@ function playRound(playerSelection, computerSelection) {
         let updatePlayerSelection = function() {
             while (checkString() == true) {
                 console.log(checkString());
-                playerSelection = prompt('Please enter rock, paper, or scissors:').toLowerCase();
+                playerSelection = prompt('Please enter rock, paper, or scissors:');
                 if (playerSelection == null) {
                     return alert('Cancelling the round.');
+                } 
+                else {
+                    playerSelection = playerSelection.toLowerCase();
                 }
             }
         }
 
         updatePlayerSelection();
-        console.log(playerSelection);
-
+        
+        //compareSelections function to compare user input to computer selection
 
     }
-    //if '' ask user to input a string
-    //else toLowerCase
-    //check string for rock, paper, or scissors
-    //if string is rock paper or scissors compare to computer choice
 }
 
 playRound();
