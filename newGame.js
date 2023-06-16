@@ -5,7 +5,7 @@ function getComputerChoice() {
     console.log(randomNumber);
     return randomNumber == 0 ? 'rock'
         : randomNumber == 1 ? 'paper'
-            : 'scissor';
+            : 'scissors';
 }
 
 //plays one round of rock-paper-scissors
@@ -42,7 +42,23 @@ function playRound(playerSelection, computerSelection) {
         updatePlayerSelection();
         
         //compareSelections function to compare user input to computer selection
-
+        let compareSelections = function() {
+        //in the case there is a draw
+        if (playerSelection === computerSelection) {
+            return alert('DRAW!');
+        }
+        //in the case user loses
+        else if ((playerSelection == 'rock' && computerSelection == 'paper') || 
+                 (playerSelection == 'paper' && computerSelection == 'scissors') ||
+                 (playerSelection == 'scissors' && computerSelection == 'rock')) {
+            return alert('You lose, loser!')
+        }
+        //in the case user wins
+        else {
+            return alert('You win, winner!')
+        }
+        }
+        compareSelections();
     }
 }
 
