@@ -91,4 +91,60 @@ function playBestOf(rounds = 5) {
         + 'Rounds Drew: ' + drawRound + '\n');
 }
 
-playBestOf();
+const playButton = document.querySelector('button');
+    playButton.addEventListener('click', playRound);
+
+// function playSound(e) {
+//     const audio = document.querySelector(`audio[code="${e.code}"]`);
+//     const key = document.querySelector(`.key[code="${e.code}"]`);
+//     if(!audio) return;
+//     audio.currentTime = 0; //rewinds audio to start
+//     audio.play();
+//     //console.log(e);
+
+//     //transition to another style once this class is added note css transition and scaling effect speed 
+//     key.classList.add('playing');
+//   }
+
+//   function removeTransition(e) {
+//     if(e.propertyName !== 'transform') return;
+//     this.classList.remove('playing');
+//   }
+
+//   const keys = document.querySelectorAll('.key');
+//   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+//   window.addEventListener ('keydown', playSound);
+
+
+// const body = document.querySelector('body');
+
+// const red = document.createElement('p');
+// red.classList.add('red');
+// red.textContent ='Hey I\'m red!';
+// red.style.color = 'red';
+// body.appendChild(red);
+
+// const blue = document.createElement('h3');
+// blue.classList.add('blue');
+// blue.textContent = 'I\'m a blue h3!';
+// blue.style.color = 'blue';
+// body.appendChild(blue);
+
+// const container = document.createElement('div');
+// container.classList.add('container');
+// container.setAttribute('style', 'border-style: solid; border-color: black; background: pink;');
+// const containerHeader = document.createElement('h1');
+// const pDiv = document.createElement('p');
+// containerHeader.textContent = 'I\'m in a div';
+// pDiv.textContent = 'ME TOO!';
+// container.appendChild(containerHeader);
+// container.appendChild(pDiv);
+// body.appendChild(container);
+
+// //Events
+// // const btn = document.querySelector('#btn');
+// // btn.onclick = () => alert("Hello World");
+
+//   btn.addEventListener('click', function (e) {
+//     console.log(e);
+//   });
