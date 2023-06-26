@@ -10,9 +10,11 @@ function getComputerChoice() {
 
 //plays one round of rock-paper-scissors
 function playRound(playerSelection, computerSelection) {
+    console.log(playerSelection);
     computerSelection = getComputerChoice();
-    console.log(computerSelection);
+    if (playerSelection == null) {
     playerSelection = prompt('Rock Paper Scissors -- Shoot!');
+    }
     //clicking cancel or escape ==  null | enter == ''
     //if null alert user 'game is ending'
     if (playerSelection == null) {
@@ -91,8 +93,20 @@ function playBestOf(rounds = 5) {
         + 'Rounds Drew: ' + drawRound + '\n');
 }
 
-const playButton = document.querySelector('button');
-    playButton.addEventListener('click', playRound);
+const selectRock = document.querySelector('.rock');
+    selectRock.addEventListener('click', function selectRock() {
+        playRound('rock');
+    });
+
+const selectPaper = document.querySelector('.paper');
+    selectPaper.addEventListener('click', function selectPaper() {
+        playRound('paper');
+    });
+
+const selectScissors = document.querySelector('.scissors');
+    selectScissors.addEventListener('click', function selectScissors() {
+        playRound('scissors');
+    });
 
 // function playSound(e) {
 //     const audio = document.querySelector(`audio[code="${e.code}"]`);
