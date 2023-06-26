@@ -73,8 +73,8 @@ function playRound(playerSelection, computerSelection) {
         else {
             compareSelections();
             console.log('You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
-            ' rounds.' +
-            '\nHere are the results of those rounds:\n' +
+            ' rounds.\n' +
+            'Here are the results of those rounds:\n' +
             'Rounds Won: ' + winRound + '\n' +
             'Rounds Loss: ' + loseRound + '\n' +
             'Rounds Drew: ' + drawRound + '\n')
