@@ -49,6 +49,7 @@ function playRound(playerSelection, computerSelection) {
             //in the case there is a draw
             if (playerSelection === computerSelection) {
                 drawRound++;
+                rounds ++;
                 return alert('Draw, you both chose ' + playerSelection);
             }
             //in the case user loses
@@ -56,11 +57,13 @@ function playRound(playerSelection, computerSelection) {
                 (playerSelection == 'paper' && computerSelection == 'scissors') ||
                 (playerSelection == 'scissors' && computerSelection == 'rock')) {
                 loseRound++;
+                rounds ++;
                 return alert('You lose! ' + computerSelection + ' beats ' + playerSelection)
             }
             //in the case user wins
             else {
                 winRound++;
+                rounds ++;
                 return alert('You win! ' + playerSelection + ' beats ' + computerSelection)
             }
         }
@@ -69,6 +72,12 @@ function playRound(playerSelection, computerSelection) {
         }
         else {
             compareSelections();
+            console.log('You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+            ' rounds.' +
+            '\nHere are the results of those rounds:\n' +
+            'Rounds Won: ' + winRound + '\n' +
+            'Rounds Loss: ' + loseRound + '\n' +
+            'Rounds Drew: ' + drawRound + '\n')
         }
     }
 }
@@ -77,6 +86,7 @@ let drawRound = 0;
 let winRound = 0;
 let loseRound = 0;
 let cancelledRound = 0;
+let rounds = 0;
 //playBestOf function
 function playBestOf(rounds = 5) {
     drawRound = 0;
