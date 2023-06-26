@@ -1,21 +1,21 @@
-//randomly selects rock, paper, or scissor for the computer
+//randomly selects sword, lance, or scissor for the computer
 function getComputerChoice() {
     //sets a random interger between 0 - 2
     let randomNumber = Math.floor(Math.random() * 3);
     console.log(randomNumber);
-    return randomNumber == 0 ? 'rock'
-        : randomNumber == 1 ? 'paper'
-            : 'scissors';
+    return randomNumber == 0 ? 'sword'
+        : randomNumber == 1 ? 'lance'
+            : 'axe';
 }
 
-//plays one round of rock-paper-scissors
+//plays one round of sword-lance-axe
 function playRound(playerSelection, computerSelection) {
     console.log(playerSelection);
     computerSelection = getComputerChoice();
     console.log(playerSelection);
 
         //checkString function
-        let checkString = (stringToCheck = playerSelection) => stringToCheck != 'rock' && stringToCheck != 'paper' && stringToCheck != 'scissors';
+        let checkString = (stringToCheck = playerSelection) => stringToCheck != 'sword' && stringToCheck != 'lance' && stringToCheck != 'axe';
 
 
         //compareSelections function to compare user input to computer selection
@@ -27,9 +27,9 @@ function playRound(playerSelection, computerSelection) {
                 console.log('Draw, you both chose ' + playerSelection);
             }
             //in the case user loses
-            else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
-                (playerSelection == 'paper' && computerSelection == 'scissors') ||
-                (playerSelection == 'scissors' && computerSelection == 'rock')) {
+            else if ((playerSelection == 'sword' && computerSelection == 'lance') ||
+                (playerSelection == 'lance' && computerSelection == 'axe') ||
+                (playerSelection == 'axe' && computerSelection == 'sword')) {
                 loseRound++;
                 rounds ++;
                 console.log('You lose! ' + computerSelection + ' beats ' + playerSelection)
@@ -87,19 +87,19 @@ let loseRound = 0;
 let cancelledRound = 0;
 let rounds = 0;
 
-const selectRock = document.querySelector('.rock');
-    selectRock.addEventListener('click', function selectRock() {
-        playRound('rock');
+const selectsword = document.querySelector('.sword');
+    selectsword.addEventListener('click', function selectsword() {
+        playRound('sword');
     });
 
-const selectPaper = document.querySelector('.paper');
-    selectPaper.addEventListener('click', function selectPaper() {
-        playRound('paper');
+const selectlance = document.querySelector('.lance');
+    selectlance.addEventListener('click', function selectlance() {
+        playRound('lance');
     });
 
-const selectScissors = document.querySelector('.scissors');
-    selectScissors.addEventListener('click', function selectScissors() {
-        playRound('scissors');
+const selectaxe = document.querySelector('.axe');
+    selectaxe.addEventListener('click', function selectaxe() {
+        playRound('axe');
     });
 
 const playerContainer = document.querySelector('.playerContainer');
