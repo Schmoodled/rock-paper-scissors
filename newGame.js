@@ -12,37 +12,11 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     console.log(playerSelection);
     computerSelection = getComputerChoice();
-    if (playerSelection == null) {
-    playerSelection = prompt('Rock Paper Scissors -- Shoot!');
-    }
-    //clicking cancel or escape ==  null | enter == ''
-    //if null alert user 'game is ending'
-    if (playerSelection == null) {
-        cancelledRound++;
-        return alert('Cancelling the round.');
-    }
-    else {
-        playerSelection = playerSelection.toLowerCase();
-        console.log(playerSelection);
+    console.log(playerSelection);
 
         //checkString function
         let checkString = (stringToCheck = playerSelection) => stringToCheck != 'rock' && stringToCheck != 'paper' && stringToCheck != 'scissors';
 
-        //update playerSelection
-        let updatePlayerSelection = function () {
-            while (checkString() == true) {
-                playerSelection = prompt('Please enter rock, paper, or scissors:');
-                if (playerSelection == null) {
-                    cancelledRound++;
-                    return alert('Cancelling the round.');
-                }
-                else {
-                    playerSelection = playerSelection.toLowerCase();
-                }
-            }
-        }
-
-        updatePlayerSelection();
 
         //compareSelections function to compare user input to computer selection
         let compareSelections = function () {
@@ -50,7 +24,7 @@ function playRound(playerSelection, computerSelection) {
             if (playerSelection === computerSelection) {
                 drawRound++;
                 rounds ++;
-                return alert('Draw, you both chose ' + playerSelection);
+                console.log('Draw, you both chose ' + playerSelection);
             }
             //in the case user loses
             else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
@@ -58,50 +32,60 @@ function playRound(playerSelection, computerSelection) {
                 (playerSelection == 'scissors' && computerSelection == 'rock')) {
                 loseRound++;
                 rounds ++;
-                return alert('You lose! ' + computerSelection + ' beats ' + playerSelection)
+                console.log('You lose! ' + computerSelection + ' beats ' + playerSelection)
             }
             //in the case user wins
             else {
                 winRound++;
                 rounds ++;
-                return alert('You win! ' + playerSelection + ' beats ' + computerSelection)
+                console.log('You win! ' + playerSelection + ' beats ' + computerSelection)
             }
         }
-        if (playerSelection === null) {
-            return
-        }
-        else {
             compareSelections();
+            results.textContent = 'You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                ' rounds.\n' + '\n' +
+                'Here are the results of those rounds:\n' +
+                'Rounds Won: ' + winRound + '\n' +
+                'Rounds Loss: ' + loseRound + '\n' +
+                'Rounds Drew: ' + drawRound + '\n';
             console.log('You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
-            ' rounds.\n' +
-            'Here are the results of those rounds:\n' +
-            'Rounds Won: ' + winRound + '\n' +
-            'Rounds Loss: ' + loseRound + '\n' +
-            'Rounds Drew: ' + drawRound + '\n')
+                ' rounds.\n' +
+                'Here are the results of those rounds:\n' +
+                'Rounds Won: ' + winRound + '\n' +
+                'Rounds Loss: ' + loseRound + '\n' +
+                'Rounds Drew: ' + drawRound + '\n')
+            
+            let checkScore = function() {
+                    if (loseRound == 5) {
+                        console.log('You lost!');
+                    }
+                    else {
+                        console.log('You reached 5 wins first!')
+                    }
+                    if (loseRound == 5 || winRound == 5){
+                        winRound = 0;
+                        loseRound = 0;
+                        drawRound = 0;
+                        rounds = 0;
+                        return results.textContent = 'You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                            ' rounds.\n' + '\n' +
+                            'Here are the results of those rounds:\n' +
+                            'Rounds Won: ' + winRound + '\n' +
+                            'Rounds Loss: ' + loseRound + '\n' +
+                            'Rounds Drew: ' + drawRound + '\n';
+                        }
+                    
+            }
+            checkScore();
+            
         }
-    }
-}
+
 
 let drawRound = 0;
 let winRound = 0;
 let loseRound = 0;
 let cancelledRound = 0;
 let rounds = 0;
-//playBestOf function
-function playBestOf(rounds = 5) {
-    drawRound = 0;
-    winRound = 0;
-    loseRound = 0;
-    cancelledRound = 0;
-    for (let i = 0; i < rounds; i++) {
-        playRound();
-    }
-    return alert('You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) + ' rounds.' 
-        + '\nHere are the results of those rounds:\n'
-        + 'Rounds Won: ' + winRound + '\n'
-        + 'Rounds Loss: ' + loseRound + '\n'
-        + 'Rounds Drew: ' + drawRound + '\n');
-}
 
 const selectRock = document.querySelector('.rock');
     selectRock.addEventListener('click', function selectRock() {
@@ -117,6 +101,19 @@ const selectScissors = document.querySelector('.scissors');
     selectScissors.addEventListener('click', function selectScissors() {
         playRound('scissors');
     });
+
+const playerContainer = document.querySelector('.playerContainer');
+
+const results = document.createElement('p');
+results.classList.add('results');
+results.setAttribute('style', 'white-space: pre;');
+results.textContent = 'You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+    ' rounds.\n' + '\n' +
+    'Here are the results of those rounds:\n' +
+    'Rounds Won: ' + winRound + '\n' +
+    'Rounds Loss: ' + loseRound + '\n' +
+    'Rounds Drew: ' + drawRound + '\n';
+playerContainer.appendChild(results);
 
 // function playSound(e) {
 //     const audio = document.querySelector(`audio[code="${e.code}"]`);
@@ -140,7 +137,7 @@ const selectScissors = document.querySelector('.scissors');
 //   window.addEventListener ('keydown', playSound);
 
 
-// const body = document.querySelector('body');
+// const body = document.querySelector('div');
 
 // const red = document.createElement('p');
 // red.classList.add('red');
