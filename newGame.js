@@ -12,6 +12,22 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     console.log(playerSelection);
     computerSelection = getComputerChoice();
+
+    let updateEnemyProfile = function () {
+        if (computerSelection === 'sword') {
+            enemyWeapon.src ='./images/lyn.png'
+            
+        }
+        else if(computerSelection === 'lance') {
+            enemyWeapon.src ='./images/lance.png'
+        }
+        else {
+            enemyWeapon.src ='./images/hector.png'
+        }
+    }
+
+    updateEnemyProfile();
+
     console.log(playerSelection);
 
         //checkString function
@@ -24,55 +40,121 @@ function playRound(playerSelection, computerSelection) {
             if (playerSelection === computerSelection) {
                 drawRound++;
                 rounds ++;
-                console.log('Draw, you both chose ' + playerSelection);
+                if (computerSelection == 'sword') {
+                    results.textContent = 'You ran into Lyn with your ' + playerSelection + ' draw!' +
+                        '\n' + '\n' +
+                        'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                        '\n' + '\n' +
+                        'Player\'s HP: ' + enemyHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                }
+                else if (computerSelection == 'lance') {
+                    playerHealth--;
+                    results.textContent = 'You ran into Andrew with your ' + playerSelection + ' time to die!' +
+                        '\n' + '\n' + 
+                        'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                        '\n' + '\n' +
+                        'Player\'s HP: ' + enemyHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                } 
+                else {
+                    results.textContent = 'You ran into Hector with your ' + playerSelection + ' draw!' +
+                        '\n' + '\n' + 
+                        'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                        '\n' + '\n' +
+                        'Player\'s HP: ' + enemyHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                }
             }
             //in the case user loses
             else if ((playerSelection == 'sword' && computerSelection == 'lance') ||
                 (playerSelection == 'lance' && computerSelection == 'axe') ||
                 (playerSelection == 'axe' && computerSelection == 'sword')) {
-                loseRound++;
+                playerHealth--;
                 rounds ++;
-                console.log('You lose! ' + computerSelection + ' beats ' + playerSelection)
+                
+                if (computerSelection == 'sword') {
+                    results.textContent = 'You ran into Lyn with your ' + playerSelection + ' big mistake!' +
+                        '\n' + '\n' +
+                        'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                        '\n' + '\n' +
+                        'Player\'s HP: ' + enemyHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                }
+                else if (computerSelection == 'lance') {
+                    results.textContent = 'You ran into Andrew with your ' + playerSelection + ' big mistake!' +
+                        '\n' + '\n' + 
+                        'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                        '\n' + '\n' +
+                        'Player\'s HP: ' + enemyHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                } 
+                else {
+                    results.textContent = 'You ran into Hector with your ' + playerSelection + ' big mistake!' +
+                        '\n' + '\n' + 
+                        'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                        '\n' + '\n' +
+                        'Player\'s HP: ' + enemyHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                }
+
             }
             //in the case user wins
             else {
-                winRound++;
+                enemyHealth--;
                 rounds ++;
-                console.log('You win! ' + playerSelection + ' beats ' + computerSelection)
+
+                if (computerSelection == 'sword') {
+                    results.textContent = 'You ran into Lyn with your ' + playerSelection + ' good hit!' +
+                        '\n' + '\n' +
+                        'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                        '\n' + '\n' +
+                        'Player\'s HP: ' + enemyHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                }
+                else if (computerSelection == 'lance') {
+                    enemyHealth++;
+                    results.textContent = 'You ran into Andrew with your ' + playerSelection + ' good try!' +
+                        '\n' + '\n' + 
+                        'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                        '\n' + '\n' +
+                        'Player\'s HP: ' + enemyHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                } 
+                else {
+                    results.textContent = 'You ran into Hector with your ' + playerSelection + ' good hit!' +
+                        '\n' + '\n' + 
+                        'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+                        '\n' + '\n' +
+                        'Player\'s HP: ' + enemyHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                }
             }
         }
             compareSelections();
-            results.textContent = 'You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
-                ' rounds.\n' + '\n' +
-                'Here are the results of those rounds:\n' +
-                'Rounds Won: ' + winRound + '\n' +
-                'Rounds Loss: ' + loseRound + '\n' +
-                'Rounds Drew: ' + drawRound + '\n';
+
+    
             console.log('You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                 ' rounds.\n' +
                 'Here are the results of those rounds:\n' +
-                'Rounds Won: ' + winRound + '\n' +
-                'Rounds Loss: ' + loseRound + '\n' +
+                'Rounds Won: ' + enemyHealth + '\n' +
+                'Rounds Loss: ' + playerHealth + '\n' +
                 'Rounds Drew: ' + drawRound + '\n')
             
             let checkScore = function() {
-                    if (loseRound == 5) {
-                        console.log('You lost!');
-                    }
-                    else {
-                        console.log('You reached 5 wins first!')
-                    }
-                    if (loseRound == 5 || winRound == 5){
-                        winRound = 0;
-                        loseRound = 0;
+        
+                    if (playerHealth == 0 || enemyHealth == 0){
+                        if (playerHealth == 0) {
+                            results.textContent = ('Game Over!');
+                        }
+                        else {
+                            results.textContent = ('Victory!')
+                        }
+                        enemyHealth = 5;
+                        playerHealth = 5;
                         drawRound = 0;
                         rounds = 0;
-                        return results.textContent = 'You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
-                            ' rounds.\n' + '\n' +
-                            'Here are the results of those rounds:\n' +
-                            'Rounds Won: ' + winRound + '\n' +
-                            'Rounds Loss: ' + loseRound + '\n' +
-                            'Rounds Drew: ' + drawRound + '\n';
+                        return
                         }
                     
             }
@@ -82,8 +164,8 @@ function playRound(playerSelection, computerSelection) {
 
 
 let drawRound = 0;
-let winRound = 0;
-let loseRound = 0;
+let enemyHealth = 5;
+let playerHealth = 5;
 let cancelledRound = 0;
 let rounds = 0;
 
@@ -102,70 +184,20 @@ const selectaxe = document.querySelector('.axe');
         playRound('axe');
     });
 
-const playerContainer = document.querySelector('.playerContainer');
+const enemyContainer = document.querySelector('.enemyContainer');
+
+//image added based on computers selection
+const enemyWeapon = document.createElement('img')
+enemyWeapon.src ='./images/who.png'
+enemyContainer.appendChild(enemyWeapon);
+
 
 const results = document.createElement('p');
 results.classList.add('results');
 results.setAttribute('style', 'white-space: pre;');
-results.textContent = 'You have played ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
-    ' rounds.\n' + '\n' +
-    'Here are the results of those rounds:\n' +
-    'Rounds Won: ' + winRound + '\n' +
-    'Rounds Loss: ' + loseRound + '\n' +
-    'Rounds Drew: ' + drawRound + '\n';
-playerContainer.appendChild(results);
+results.textContent = 'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
+    '\n' + '\n' +
+    'Player\'s HP: ' + enemyHealth + ' | ' +
+    'Enemy Team\'s HP: ' + playerHealth + '\n';
+enemyContainer.appendChild(results);
 
-// function playSound(e) {
-//     const audio = document.querySelector(`audio[code="${e.code}"]`);
-//     const key = document.querySelector(`.key[code="${e.code}"]`);
-//     if(!audio) return;
-//     audio.currentTime = 0; //rewinds audio to start
-//     audio.play();
-//     //console.log(e);
-
-//     //transition to another style once this class is added note css transition and scaling effect speed 
-//     key.classList.add('playing');
-//   }
-
-//   function removeTransition(e) {
-//     if(e.propertyName !== 'transform') return;
-//     this.classList.remove('playing');
-//   }
-
-//   const keys = document.querySelectorAll('.key');
-//   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-//   window.addEventListener ('keydown', playSound);
-
-
-// const body = document.querySelector('div');
-
-// const red = document.createElement('p');
-// red.classList.add('red');
-// red.textContent ='Hey I\'m red!';
-// red.style.color = 'red';
-// body.appendChild(red);
-
-// const blue = document.createElement('h3');
-// blue.classList.add('blue');
-// blue.textContent = 'I\'m a blue h3!';
-// blue.style.color = 'blue';
-// body.appendChild(blue);
-
-// const container = document.createElement('div');
-// container.classList.add('container');
-// container.setAttribute('style', 'border-style: solid; border-color: black; background: pink;');
-// const containerHeader = document.createElement('h1');
-// const pDiv = document.createElement('p');
-// containerHeader.textContent = 'I\'m in a div';
-// pDiv.textContent = 'ME TOO!';
-// container.appendChild(containerHeader);
-// container.appendChild(pDiv);
-// body.appendChild(container);
-
-// //Events
-// // const btn = document.querySelector('#btn');
-// // btn.onclick = () => alert("Hello World");
-
-//   btn.addEventListener('click', function (e) {
-//     console.log(e);
-//   });
