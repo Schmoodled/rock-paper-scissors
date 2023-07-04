@@ -5,7 +5,6 @@ body {
 }
 
 .playerContainer {
-    background-color: azure;
     padding: 20px;
     display: flex;
     justify-content: space-evenly;
@@ -13,7 +12,6 @@ body {
 
 .enemyContainer {
     display: flex;
-    background-color: bisque;
 }
 
 .enemyContainer img {
@@ -24,6 +22,7 @@ body {
 
 button {
     background: transparent;  
+    border: 0;
 }
 
 img {

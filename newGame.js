@@ -19,7 +19,7 @@ function playRound(playerSelection, computerSelection) {
             
         }
         else if(computerSelection === 'lance') {
-            enemyWeapon.src ='./images/lance.png'
+            enemyWeapon.src ='./images/andrew.png'
         }
         else {
             enemyWeapon.src ='./images/hector.png'
