@@ -45,8 +45,8 @@ function playRound(playerSelection, computerSelection) {
                         '\n' + '\n' +
                         'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                         '\n' + '\n' +
-                        'Player\'s HP: ' + enemyHealth + ' | ' +
-                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                        'Player\'s HP: ' + playerHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + enemyHealth + '\n';
                 }
                 else if (computerSelection == 'lance') {
                     playerHealth--;
@@ -54,22 +54,22 @@ function playRound(playerSelection, computerSelection) {
                         '\n' + '\n' + 
                         'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                         '\n' + '\n' +
-                        'Player\'s HP: ' + enemyHealth + ' | ' +
-                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                        'Player\'s HP: ' + playerHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + enemyHealth + '\n';
                 } 
                 else {
                     results.textContent = 'You ran into Hector with your ' + playerSelection + ' draw!' +
                         '\n' + '\n' + 
                         'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                         '\n' + '\n' +
-                        'Player\'s HP: ' + enemyHealth + ' | ' +
-                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                        'Player\'s HP: ' + playerHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + enemyHealth + '\n';
                 }
             }
             //in the case user loses
-            else if ((playerSelection == 'sword' && computerSelection == 'lance') ||
-                (playerSelection == 'lance' && computerSelection == 'axe') ||
-                (playerSelection == 'axe' && computerSelection == 'sword')) {
+            else if ((playerSelection == 'axe' && computerSelection == 'sword') ||
+                (playerSelection == 'sword' && computerSelection == 'lance') ||
+                (playerSelection == 'lance' && computerSelection == 'axe')) {
                 playerHealth--;
                 rounds ++;
                 
@@ -78,24 +78,24 @@ function playRound(playerSelection, computerSelection) {
                         '\n' + '\n' +
                         'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                         '\n' + '\n' +
-                        'Player\'s HP: ' + enemyHealth + ' | ' +
-                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                        'Player\'s HP: ' + playerHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + enemyHealth + '\n';
                 }
                 else if (computerSelection == 'lance') {
                     results.textContent = 'You ran into Andrew with your ' + playerSelection + ' big mistake!' +
                         '\n' + '\n' + 
                         'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                         '\n' + '\n' +
-                        'Player\'s HP: ' + enemyHealth + ' | ' +
-                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                        'Player\'s HP: ' + playerHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + enemyHealth + '\n';
                 } 
                 else {
                     results.textContent = 'You ran into Hector with your ' + playerSelection + ' big mistake!' +
                         '\n' + '\n' + 
                         'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                         '\n' + '\n' +
-                        'Player\'s HP: ' + enemyHealth + ' | ' +
-                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                        'Player\'s HP: ' + playerHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + enemyHealth + '\n';
                 }
 
             }
@@ -109,25 +109,24 @@ function playRound(playerSelection, computerSelection) {
                         '\n' + '\n' +
                         'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                         '\n' + '\n' +
-                        'Player\'s HP: ' + enemyHealth + ' | ' +
-                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                        'Player\'s HP: ' + playerHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + enemyHealth + '\n';
                 }
                 else if (computerSelection == 'lance') {
-                    enemyHealth++;
-                    results.textContent = 'You ran into Andrew with your ' + playerSelection + ' good try!' +
+                    results.textContent = 'You ran into Andrew with your ' + playerSelection + ' watch yourself!' +
                         '\n' + '\n' + 
                         'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                         '\n' + '\n' +
-                        'Player\'s HP: ' + enemyHealth + ' | ' +
-                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                        'Player\'s HP: ' + playerHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + enemyHealth + '\n';
                 } 
                 else {
                     results.textContent = 'You ran into Hector with your ' + playerSelection + ' good hit!' +
                         '\n' + '\n' + 
                         'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
                         '\n' + '\n' +
-                        'Player\'s HP: ' + enemyHealth + ' | ' +
-                        'Enemy Team\'s HP: ' + playerHealth + '\n';
+                        'Player\'s HP: ' + playerHealth + ' | ' +
+                        'Enemy Team\'s HP: ' + enemyHealth + '\n';
                 }
             }
         }
@@ -197,7 +196,7 @@ results.classList.add('results');
 results.setAttribute('style', 'white-space: pre;');
 results.textContent = 'Amount of Clashes: ' + (parseFloat(rounds) - parseFloat(cancelledRound)) +
     '\n' + '\n' +
-    'Player\'s HP: ' + enemyHealth + ' | ' +
-    'Enemy Team\'s HP: ' + playerHealth + '\n';
+    'Player\'s HP: ' + playerHealth + ' | ' +
+    'Enemy Team\'s HP: ' + enemyHealth + '\n';
 enemyContainer.appendChild(results);
 
